@@ -93,7 +93,7 @@ authRouter.post("/login", async function (req, res) {
     const hash = appUser.password;
     const userpassword = payload.password;
     if (verify === "true" && appUser !== "null") {
-      const app = bcrypt.compare(userpassword, hash, (err, result) => {
+      const appUser = bcrypt.compare(userpassword, hash, (err, result) => {
         console.log(result);
         if (result) {
           const responceObj = appUser.toObject();

@@ -85,7 +85,7 @@ authRouter.post("/login", async function (req, res) {
     const payload = req.body;
     const appUser = await AppUserModel.findOne(
       { email: payload.email },
-      { id: 1, name: 1, email: 1, password: 1, isVerified: 1, _id: 0 }
+      { email: 1, password: 1, isVerified: 1, _id: 0 }
     );
 
     console.log(appUser.isVerified);

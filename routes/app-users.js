@@ -64,7 +64,7 @@ authRouter.post("/regmail", async function (req, res) {
     );
     if (appUser) {
       const responceObj = appUser.toObject();
-      const link = `${process.env.FRONTEND_twostep}/verify/?reset=${resetKey}`;
+      const link = `${process.env.FRONTEND_twostep}/twostep/?reset=${resetKey}`;
       console.log(link);
       await transporter.sendMail({
         ...mailOptions,

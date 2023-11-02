@@ -92,20 +92,30 @@ authRouter.post("/login", async function (req, res) {
     const verify = appUser.isVerified;
     const hash = appUser.password;
     const userpassword = payload.password;
-    if (verify === "true" && appUser !== "null") {
-      const appUser = bcrypt.compare(userpassword, hash, (err, result) => {
-        console.log(result);
-        if (result) {
-          const responceObj = appUser.toObject();
-          delete responceObj.password;
-          res.send(responceObj);
-        } else {
-          res.status(401).send({ msg: "invalid credentials" });
-        }
-      });
-    } else {
-      res.status(405).send({ msg: "Not activated" });
+    // if (verify === "true" && appUser !== "null") {
+    //   const app = bcrypt.compare(userpassword, hash, (err, result) => {
+    //     console.log(result);
+    //     if (result) {
+    //       const responceObj = app.toObject();
+    //       delete responceObj.password;
+    //       res.send(responceObj);
+    //     } else {
+    //       res.status(401).send({ msg: "invalid credentials" });
+    //     }
+    //   });
+    // } else {
+    //   res.status(405).send({ msg: "Not activated" });
+    // }
+    if (verify == "true") {
+      const app = bcrypt.compare(userpassword,hash);
+      if (app) {
+        
+       return res.status(200).send({msg:" login successful"});
+      } else {
+        return res.status(404).send({msg:" login failed"});  }
     }
+
+
   } catch (err) {
     console.log(err);
     res.status(404).send({ msg: "user not found" });

@@ -87,7 +87,7 @@ DiatRouter.get("/weightgain", async function (req, res) {
   }
 });
 
-DiatRouter.post("/weightloss", async function (req, res) {
+DiatRouter.post("/tamilweightloss", async function (req, res) {
   try {
     const{day,
       mealTime,

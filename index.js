@@ -4,7 +4,7 @@ import cors from 'cors';
 // import userRouter from './routes/User.js';
 
 import connectToDb from './db-utils/mongoos-connect.js';
-import authRouter, { Auth } from './routes/app-users.js';
+import  { Auth } from './routes/app-users.js';
 import  { diet } from './routes/Diat.js';
 
 const app = express();

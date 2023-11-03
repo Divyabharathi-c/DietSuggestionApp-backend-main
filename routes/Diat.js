@@ -125,7 +125,7 @@ DiatRouter.get("/tamilweightloss", async function (req, res) {
   }
 });
 
-DiatRouter.post("/weightgain", async function (req, res) {
+DiatRouter.post("/tamilweightgain", async function (req, res) {
   try {
     const{day,
       mealTime,
@@ -134,23 +134,21 @@ DiatRouter.post("/weightgain", async function (req, res) {
       protein,
       carbs,
       fat} = req.body
-    const appUser = await WeightGain({
-      day,
+    const appUser = new WeightGain({day,
       mealTime,
       food,
       calories,
       protein,
       carbs,
-      fat
-    });
-await appUser.save();
-res.status(201).send({msg:"data added"});
-   
+      fat} );
+      await appUser.save();
+      res.status(201).send({msg: "document added"});
   } catch (err) {
     console.log(err);
     res.status(500).send({ msg: "Error occuerred while fetching users" });
   }
 });
+
 
 DiatRouter.get("/tamilweightgain", async function (req, res) {
   try {

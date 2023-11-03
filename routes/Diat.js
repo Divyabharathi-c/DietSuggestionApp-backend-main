@@ -45,6 +45,33 @@ DiatRouter.get("/weightloss", async function (req, res) {
   }
 });
 
+DiatRouter.post("/weightgain", async function (req, res) {
+  try {
+    const{day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat} = req.body
+    const appUser = await WeightGain({
+      day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat
+    });
+await appUser.save();
+res.status(201).send({msg:"data added"});
+   
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ msg: "Error occuerred while fetching users" });
+  }
+});
+
 DiatRouter.get("/weightgain", async function (req, res) {
   try {
     const appUser = await WeightGain.find();
@@ -60,6 +87,30 @@ DiatRouter.get("/weightgain", async function (req, res) {
   }
 });
 
+DiatRouter.post("/weightloss", async function (req, res) {
+  try {
+    const{day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat} = req.body
+    const appUser = new WeightLoss({day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat} );
+      await appUser.save();
+      res.status(201).send({msg: "document added"});
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ msg: "Error occuerred while fetching users" });
+  }
+});
+
 DiatRouter.get("/tamilweightloss", async function (req, res) {
   try {
     const appUser = await TamilWeightLoss.find();
@@ -68,6 +119,33 @@ DiatRouter.get("/tamilweightloss", async function (req, res) {
     } else {
       res.send("error data");
     }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ msg: "Error occuerred while fetching users" });
+  }
+});
+
+DiatRouter.post("/weightgain", async function (req, res) {
+  try {
+    const{day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat} = req.body
+    const appUser = await WeightGain({
+      day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat
+    });
+await appUser.save();
+res.status(201).send({msg:"data added"});
+   
   } catch (err) {
     console.log(err);
     res.status(500).send({ msg: "Error occuerred while fetching users" });

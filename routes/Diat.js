@@ -7,6 +7,30 @@ import {
 } from "../db-utils/module.js";
 const DiatRouter = express.Router();
 
+DiatRouter.post("/weightloss", async function (req, res) {
+  try {
+    const{day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat} = req.body
+    const appUser = new WeightLoss({day,
+      mealTime,
+      food,
+      calories,
+      protein,
+      carbs,
+      fat} );
+      await appUser.save();
+      res.status(201).send({msg: "document added"});
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ msg: "Error occuerred while fetching users" });
+  }
+});
+
 DiatRouter.get("/weightloss", async function (req, res) {
   try {
     const appUser = await WeightLoss.find();

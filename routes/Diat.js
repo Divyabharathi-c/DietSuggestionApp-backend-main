@@ -65,4 +65,4 @@ DiatRouter.get("/tamilweightgain", async function (req, res) {
   }
 });
 
-export default DiatRouter;
+export const diet = DiatRouter;

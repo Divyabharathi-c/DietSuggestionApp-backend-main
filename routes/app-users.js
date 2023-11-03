@@ -267,4 +267,4 @@ authRouter.put("/editprofile", async function (req, res) {
   }
 });
 
-export default authRouter;
+export const Auth = authRouter;

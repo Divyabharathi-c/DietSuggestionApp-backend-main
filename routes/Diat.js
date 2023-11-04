@@ -134,7 +134,7 @@ DiatRouter.post("/tamilweightgain", async function (req, res) {
       protein,
       carbs,
       fat} = req.body
-    const appUser = new WeightGain({day,
+    const appUser = new TamilWeightGain({day,
       mealTime,
       food,
       calories,
